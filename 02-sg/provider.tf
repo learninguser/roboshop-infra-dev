@@ -8,7 +8,7 @@ terraform {
 
   backend "s3" {
     bucket         = "learninguser"
-    key            = "sg"
+    key            = "sg-dev"
     region         = "us-east-1"
     dynamodb_table = "terraform_lock"
   }
