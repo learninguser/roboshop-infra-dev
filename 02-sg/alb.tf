@@ -1,4 +1,4 @@
-module "alb" {
+module "app_alb" {
   source         = "../../terraform-aws-sg"
   project_name   = var.project_name
   environment    = var.environment
