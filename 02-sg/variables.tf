@@ -40,9 +40,9 @@ variable "vpc_ingress_rules" {
   type = list(any)
   default = [
     {
-      from_port   = 1179
-      to_port     = 1179
-      description = "Allow port 1179 to connect to openvpn "
+      from_port   = 1194
+      to_port     = 1194
+      description = "Allow port 1194 to connect to openvpn "
       protocol    = "tcp"
       cidr_blocks = ["77.64.254.132/32"]
     },
