@@ -19,5 +19,21 @@ module "records" {
         "${module.redis.private_ip}",
       ]
     },
+    {
+      name    = "mysql"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.mysql.private_ip}",
+      ]
+    },
+    {
+      name    = "rabbitmq"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.rabbitmq.private_ip}",
+      ]
+    }
   ]
 }
