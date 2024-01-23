@@ -11,5 +11,13 @@ module "records" {
         "${module.mongodb.private_ip}",
       ]
     },
+    {
+      name    = "redis"
+      type    = "A"
+      ttl     = 1
+      records = [
+        "${module.redis.private_ip}",
+      ]
+    },
   ]
 }
