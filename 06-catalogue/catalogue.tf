@@ -10,12 +10,12 @@
 
 # 1. Create one instance
 module "catalogue" {
-  source                              = "terraform-aws-modules/ec2-instance/aws"
-  name                                = "${local.name}-${var.tags.Component}-ami"
-  instance_type                       = "t3.micro"
-  ami                                 = data.aws_ami.centos.id
-  vpc_security_group_ids              = [data.aws_ssm_parameter.catalogue_sg_id.value]
-  subnet_id                           = local.private_subnet_id
+  source                 = "terraform-aws-modules/ec2-instance/aws"
+  name                   = "${local.name}-${var.tags.Component}-ami"
+  instance_type          = "t3.micro"
+  ami                    = data.aws_ami.centos.id
+  vpc_security_group_ids = [data.aws_ssm_parameter.catalogue_sg_id.value]
+  subnet_id              = local.private_subnet_id
 
   tags = merge(
     var.common_tags,
@@ -76,10 +76,7 @@ resource "null_resource" "catalogue_delete" {
   }
 
   provisioner "local-exec" {
-    command = [
-      "aws ec2 cancel-spot-instance-requests --spot-instance-request-ids ${module.catalogue.spot_instance_id}",
-      "aws ec2 terminate-instances --instance-ids ${module.catalogue.id}"
-    ]
+    command = "aws ec2 terminate-instances --instance-ids ${module.catalogue.id}"
   }
 
   depends_on = [aws_ami_from_instance.catalogue]
@@ -91,7 +88,7 @@ resource "aws_launch_template" "catalogue" {
 
   image_id                             = aws_ami_from_instance.catalogue.id
   instance_initiated_shutdown_behavior = "terminate"
-  instance_type                        = "t2.micro"
+  instance_type                        = "t3.micro"
   update_default_version               = true
 
   vpc_security_group_ids = [data.aws_ssm_parameter.catalogue_sg_id.value]
@@ -114,8 +111,8 @@ resource "aws_autoscaling_group" "catalogue" {
   health_check_type         = "ELB"
   desired_capacity          = 2
   vpc_zone_identifier       = split(",", data.aws_ssm_parameter.private_subnet_ids.value)
-  target_group_arns = [ aws_lb_target_group.catalogue.arn ]
-  
+  target_group_arns         = [aws_lb_target_group.catalogue.arn]
+
   launch_template {
     id      = aws_launch_template.catalogue.id
     version = aws_launch_template.catalogue.latest_version
