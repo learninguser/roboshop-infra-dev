@@ -8,6 +8,7 @@
 # 6. Create launch template with AMI
 # 7. Create autoscaling group
 # 8. Load Balancer rule
+# 9. Add autoscaling policy
 
 # 1. Create one instance
 module "catalogue" {
@@ -140,7 +141,6 @@ resource "aws_autoscaling_group" "catalogue" {
 }
 
 # 8. Load Balancer rule
-
 resource "aws_lb_listener_rule" "catalogue" {
   listener_arn = data.aws_ssm_parameter.app_alb_listener_arn.value
   priority     = 10
@@ -154,5 +154,20 @@ resource "aws_lb_listener_rule" "catalogue" {
     host_header {
       values = ["${var.tags.Component}.app-${var.environment}.${var.zone_name}"]
     }
+  }
+}
+
+# 9. Add autoscaling policy
+resource "aws_autoscaling_policy" "catalogue" {
+  autoscaling_group_name = "${local.name}-${var.tags.Component}"
+  name                   = "${local.name}-${var.tags.Component}"
+  policy_type            = "TargetTrackingScaling"
+
+  target_tracking_configuration {
+    predefined_metric_specification {
+      predefined_metric_type = "ASGAverageCPUUtilization"
+    }
+
+    target_value = 5.0
   }
 }
