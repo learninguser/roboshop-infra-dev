@@ -16,9 +16,6 @@ module "catalogue" {
   ami                                 = data.aws_ami.centos.id
   vpc_security_group_ids              = [data.aws_ssm_parameter.catalogue_sg_id.value]
   subnet_id                           = local.private_subnet_id
-  create_spot_instance                = true
-  spot_type                           = "persistent"
-  spot_instance_interruption_behavior = "stop"
 
   tags = merge(
     var.common_tags,
