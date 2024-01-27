@@ -4,7 +4,7 @@ module "records" {
 
   records = [
     {
-      name    = "mongodb"
+      name    = "mongodb-dev"
       type    = "A"
       ttl     = 1
       records = [
@@ -12,7 +12,7 @@ module "records" {
       ]
     },
     {
-      name    = "redis"
+      name    = "redis-dev"
       type    = "A"
       ttl     = 1
       records = [
@@ -20,7 +20,7 @@ module "records" {
       ]
     },
     {
-      name    = "mysql"
+      name    = "mysql-dev"
       type    = "A"
       ttl     = 1
       records = [
@@ -28,7 +28,7 @@ module "records" {
       ]
     },
     {
-      name    = "rabbitmq"
+      name    = "rabbitmq-dev"
       type    = "A"
       ttl     = 1
       records = [
