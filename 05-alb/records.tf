@@ -6,7 +6,7 @@ module "records" {
 
   records = [
     {
-      name    = "*.-${var.environment}"
+      name    = "*.app-${var.environment}"
       type    = "A"
       alias   = {
         name    = aws_lb.app_alb.dns_name
