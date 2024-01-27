@@ -1,3 +1,3 @@
-data "aws_route53_zone" "zone_id" {
+data "aws_route53_zone" "learninguser" {
   name = "learninguser.shop"
 }

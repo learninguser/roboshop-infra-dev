@@ -30,7 +30,7 @@ resource "aws_route53_record" "learninguser" {
   records         = [each.value.record]
   ttl             = 1
   type            = each.value.type
-  zone_id         = data.aws_route53_zone.zone_id
+  zone_id         = data.aws_route53_zone.learninguser.zone_id
 }
 
 ## b. Record Validation
