@@ -18,7 +18,7 @@ resource "aws_lb" "web_alb" {
 }
 
 # Add a listener with rule that returns fixed response
-resource "aws_lb_listener" "front_end" {
+resource "aws_lb_listener" "web_alb" {
   load_balancer_arn = aws_lb.web_alb.arn
   port              = "443"
   protocol          = "HTTPS"
