@@ -38,3 +38,13 @@ resource "aws_security_group_rule" "web_alb_internet" {
   protocol          = "tcp"
   security_group_id = module.web.sg_id
 }
+
+# App ALB should accept connections from Web
+resource "aws_security_group_rule" "app_alb_web" {
+  source_security_group_id = module.web.sg_id
+  type                     = "ingress"
+  from_port                = 80
+  to_port                  = 80
+  protocol                 = "tcp"
+  security_group_id        = module.app_alb.sg_id
+}
