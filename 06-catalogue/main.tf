@@ -67,7 +67,7 @@ resource "aws_ec2_instance_state" "catalogue" {
 
 # 4. Take AMI
 resource "aws_ami_from_instance" "catalogue" {
-  name               = "${local.name}-${var.tags.Component}"
+  name               = "${local.name}-${var.tags.Component}-${local.current_time}"
   source_instance_id = module.catalogue.id
   depends_on         = [aws_ec2_instance_state.catalogue]
 }
