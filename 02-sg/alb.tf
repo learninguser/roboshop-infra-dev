@@ -36,7 +36,7 @@ resource "aws_security_group_rule" "web_alb_internet" {
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  security_group_id = module.web.sg_id
+  security_group_id = module.web_alb.sg_id
 }
 
 # App ALB should accept connections from Web
