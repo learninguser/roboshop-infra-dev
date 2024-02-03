@@ -13,7 +13,7 @@ resource "aws_lb" "web_alb" {
 
   tags = merge(
     var.common_tags,
-    var.tags
+    var.alb_tags
   )
 }
 
