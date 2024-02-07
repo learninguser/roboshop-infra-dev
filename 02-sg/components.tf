@@ -1,5 +1,5 @@
 module "mongodb" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for MongoDB"
@@ -9,7 +9,7 @@ module "mongodb" {
 }
 
 module "redis" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for redis"
@@ -19,7 +19,7 @@ module "redis" {
 }
 
 module "mysql" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for mysql"
@@ -29,7 +29,7 @@ module "mysql" {
 }
 
 module "rabbitmq" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for rabbitmq"
@@ -39,7 +39,7 @@ module "rabbitmq" {
 }
 
 module "catalogue" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for catalogue"
@@ -49,7 +49,7 @@ module "catalogue" {
 }
 
 module "user" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for user"
@@ -59,7 +59,7 @@ module "user" {
 }
 
 module "cart" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for cart"
@@ -69,7 +69,7 @@ module "cart" {
 }
 
 module "shipping" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for shipping"
@@ -79,7 +79,7 @@ module "shipping" {
 }
 
 module "payment" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for payment"
@@ -89,7 +89,7 @@ module "payment" {
 }
 
 module "web" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for web"

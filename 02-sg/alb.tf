@@ -1,5 +1,5 @@
 module "app_alb" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for ALB"
@@ -20,7 +20,7 @@ resource "aws_security_group_rule" "app_alb_vpn" {
 
 # Web ALB
 module "web_alb" {
-  source         = "../../terraform-aws-sg"
+  source         = "git::https://github.com/learninguser/terraform-aws-sg.git?ref=master"
   project_name   = var.project_name
   environment    = var.environment
   sg_description = "SG for ALB"
