@@ -1,5 +1,5 @@
 module "cart" {
-  source               = "../../terraform-roboshop-app"
+  source               = "git::https://github.com/learninguser/terraform-roboshop-app.git?ref=master"
   centos_ami_id        = data.aws_ami.centos.id
   vpc_id               = data.aws_ssm_parameter.vpc_id.value
   subnet_ids           = data.aws_ssm_parameter.private_subnet_ids.value
